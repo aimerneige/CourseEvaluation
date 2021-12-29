@@ -13,7 +13,7 @@ public class Admin {
     @Column(length = 10)
     private String name; // 姓名
 
-    @Column(length = 11)
+    @Column(length = 11, unique = true)
     private String username; // 用户名
 
     @Column
