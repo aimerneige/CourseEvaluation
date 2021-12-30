@@ -8,7 +8,7 @@ Java Spring Boot Course Design. University Course Evaluation System.
 
 ## How to build
 
-1. Add `application.yml` file at `src/main/resources`.
+1. Add `application.yml` file with database config at `src/main/resources`.
 2. Run `./gradlew build` to get a jar file.
 
 Example:

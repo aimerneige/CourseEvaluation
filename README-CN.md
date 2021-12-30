@@ -6,7 +6,7 @@ Java Spring Boot 课程设计。大学课程评课系统。
 
 ## 如何编译
 
-1. 在 `src/main/resources` 目录下添加 `application.yml` 文件。
+1. 在 `src/main/resources` 目录下添加 `application.yml` 文件填入数据库配置。
 2. 执行 `./gradlew build` 指令获得 jar 文件。
 
 示例：
