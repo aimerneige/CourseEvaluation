@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/teacher")
 public class TeacherController {
@@ -22,6 +24,7 @@ public class TeacherController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Get teacher by id", notes = "Get teacher by id")
     @GetMapping("/{id}")
     public @ResponseBody TeacherDto getTeacherById(@PathVariable("id") long id) {
         Teacher teacher = repository.findById(id);

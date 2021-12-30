@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/evaluation")
 public class EvaluationController {
@@ -22,6 +24,7 @@ public class EvaluationController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Get evaluation by id", notes = "Get evaluation by id")
     @GetMapping("/{id}")
     public @ResponseBody EvaluationDto getEvaluationById(@PathVariable("id") long id) {
         Evaluation evaluation = repository.findById(id);

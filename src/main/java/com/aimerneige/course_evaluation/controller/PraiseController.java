@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/praise")
 public class PraiseController {
@@ -22,6 +24,7 @@ public class PraiseController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Get praise by id", notes = "Get praise by id")
     @GetMapping("/{id}")
     public @ResponseBody PraiseDto getPraiseById(@PathVariable("id") long id) {
         Praise praise = repository.findById(id);

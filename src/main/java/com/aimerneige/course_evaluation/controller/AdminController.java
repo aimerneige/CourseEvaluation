@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,6 +25,7 @@ public class AdminController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Get admin by id", notes = "Get admin by id")
     @GetMapping("/{id}")
     public @ResponseBody AdminDto getAdminById(@PathVariable("id") long id) {
         Admin admin = repository.findById(id);

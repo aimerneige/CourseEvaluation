@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/question")
 public class QuestionController {
@@ -22,6 +24,7 @@ public class QuestionController {
         this.repository = repository;
     }
 
+    @ApiOperation(value = "Get question by id", notes = "Get question by id")
     @GetMapping("/{id}")
     public @ResponseBody QuestionDto getQuestionById(@PathVariable("id") long id) {
         Question question = repository.findById(id);
