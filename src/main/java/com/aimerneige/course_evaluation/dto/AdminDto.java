@@ -7,7 +7,6 @@ public class AdminDto {
     private Long id;
     private String name;
     private String username;
-    private String password;
 
     public AdminDto() {
     }
@@ -16,7 +15,6 @@ public class AdminDto {
         this.id = admin.getId();
         this.name = admin.getName();
         this.username = admin.getUsername();
-        this.password = admin.getPassword();
     }
 
     public Long getId() {
@@ -41,13 +39,5 @@ public class AdminDto {
 
     public void setUsername(String username) {
         this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

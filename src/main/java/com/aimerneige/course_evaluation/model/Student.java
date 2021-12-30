@@ -27,6 +27,9 @@ public class Student {
     private String email; // 邮箱
 
     @Column
+    private String password; // 密码
+
+    @Column
     private Integer age; // 年龄
 
     @OneToMany(mappedBy = "student")
@@ -78,6 +81,14 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getAge() {
