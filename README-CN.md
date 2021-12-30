@@ -21,7 +21,7 @@ spring:
     username: root
     password: example_password
   jpa:
-    database: MySQL
+    database: MYSQL
     hibernate.ddl-auto: update
     generate-ddl: true
     show-sql: true
