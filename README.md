@@ -16,7 +16,15 @@ Example:
 ```yml
 server:
   port: 9090
+  error:
+    whitelabel:
+      enabled: false
 spring:
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_course_evaluation?characterEncoding=utf-8
