@@ -2,6 +2,10 @@
 
 [简体中文](README-CN.md)
 
+## Description
+
+Java Spring Boot Course Design. University Course Evaluation System.
+
 ## How to build
 
 1. Add `application.yml` file at `src/main/resources`.

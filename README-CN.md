@@ -1,5 +1,9 @@
 # CourseEvaluation
 
+## 介绍
+
+Java Spring Boot 课程设计。大学课程评课系统。
+
 ## 如何编译
 
 1. 在 `src/main/resources` 目录下添加 `application.yml` 文件。
