@@ -1,8 +1,8 @@
 package com.aimerneige.course_evaluation.exceptions.resolvers;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
+
+import com.aimerneige.course_evaluation.response.Response;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionResolver {
 
     @ExceptionHandler(Exception.class)
-    public HashMap<String, String> handleException(HttpServletRequest request, Exception e) {
-        HashMap<String, String> response = new HashMap<>();
-        response.put("message", e.getMessage());
+    public Response handleException(HttpServletRequest request, Exception e) {
+        Response response = Response.internalServerError();
+        response.setMessage("Internal server error");
+        response.setData(e.getMessage());
         return response;
     }
 }

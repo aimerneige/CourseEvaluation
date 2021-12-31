@@ -1,8 +1,8 @@
 package com.aimerneige.course_evaluation.exceptions.resolvers;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
+
+import com.aimerneige.course_evaluation.response.Response;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -15,10 +15,11 @@ import org.springframework.web.servlet.NoHandlerFoundException;
 public class NotFoundResourceExceptionResolver {
 
     @ExceptionHandler(NoHandlerFoundException.class)
-    public HashMap<String, String> handleNotFoundResourceException(HttpServletRequest request,
+    public Response handleNotFoundResourceException(HttpServletRequest request,
             NoHandlerFoundException e) {
-        HashMap<String, String> response = new HashMap<>();
-        response.put("message", "Requested resource wasn't found on the server");
+        Response response = Response.notFound();
+        response.setMessage("Requested resource wasn't found on the server");
+        response.setData(e.getMessage());
         return response;
     }
 }

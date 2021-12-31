@@ -1,8 +1,8 @@
 package com.aimerneige.course_evaluation.exceptions.resolvers;
 
-import java.util.HashMap;
-
 import javax.servlet.http.HttpServletRequest;
+
+import com.aimerneige.course_evaluation.response.Response;
 
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -15,10 +15,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class MissingPathVariableExceptionResolver {
 
     @ExceptionHandler(MissingPathVariableException.class)
-    public HashMap<String, String> handleMissingPathVariableException(HttpServletRequest request,
+    public Response handleMissingPathVariableException(HttpServletRequest request,
             MissingPathVariableException e) {
-        HashMap<String, String> response = new HashMap<>();
-        response.put("message", "Required path variable is missing in this request. Please add it to your request.");
+        Response response = Response.badRequest();
+        response.setMessage("Required path variable is missing in this request.");
+        response.setData(e.getMessage());
         return response;
     }
 }
