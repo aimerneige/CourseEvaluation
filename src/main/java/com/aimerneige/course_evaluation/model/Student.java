@@ -11,7 +11,7 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // 主键
 
-    @Column(length = 10)
+    @Column(length = 10, unique = true)
     private String idNumber; // 学号
 
     @Column(length = 10)
