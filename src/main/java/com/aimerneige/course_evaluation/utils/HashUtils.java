@@ -3,6 +3,10 @@ package com.aimerneige.course_evaluation.utils;
 import java.security.MessageDigest;
 
 public class HashUtils {
+
+    private HashUtils() {
+    }
+
     public static String md5(String str) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");
