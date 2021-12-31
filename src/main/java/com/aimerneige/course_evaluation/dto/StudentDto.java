@@ -1,8 +1,9 @@
 package com.aimerneige.course_evaluation.dto;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Set;
 
+import com.aimerneige.course_evaluation.model.Evaluation;
 import com.aimerneige.course_evaluation.model.Student;
 
 public class StudentDto {
@@ -27,9 +28,12 @@ public class StudentDto {
         this.sex = student.getSex();
         this.email = student.getEmail();
         this.age = student.getAge();
-        this.evaluationIds = student.getEvaluations()
-                .stream().map(evaluation -> evaluation.getId())
-                .collect(Collectors.toList());
+        Set<Evaluation> evaluations = student.getEvaluations();
+        if (evaluations != null) {
+            for (Evaluation evaluation : evaluations) {
+                this.evaluationIds.add(evaluation.getId());
+            }
+        }
     }
 
     public Long getId() {

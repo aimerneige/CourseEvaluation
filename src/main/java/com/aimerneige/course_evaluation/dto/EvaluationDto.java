@@ -1,9 +1,11 @@
 package com.aimerneige.course_evaluation.dto;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.aimerneige.course_evaluation.model.Evaluation;
+import com.aimerneige.course_evaluation.model.Question;
 
 public class EvaluationDto {
 
@@ -19,9 +21,12 @@ public class EvaluationDto {
     public EvaluationDto(Evaluation evaluation) {
         this.id = evaluation.getId();
         this.praiseId = evaluation.getPraise().getId();
-        this.questionIds = evaluation.getQuestions()
-                .stream().map(question -> question.getId())
-                .collect(Collectors.toList());
+        Set<Question> questions = evaluation.getQuestions();
+        if (questions != null) {
+            for (Question question : questions) {
+                this.questionIds.add(question.getId());
+            }
+        }
         this.studentId = evaluation.getStudent().getId();
         this.courseId = evaluation.getCourse().getId();
     }
