@@ -10,4 +10,6 @@ public interface TeacherRepository extends CrudRepository<Teacher, Long> {
     Teacher findById(long id);
 
     Iterable<Teacher> findByName(String name);
+
+    Teacher findByIdNumber(String idNumber);
 }
