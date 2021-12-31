@@ -28,6 +28,9 @@ public class AdminController {
 
     private final AdminRepository repository;
 
+    private final Response adminNotFoundResponse = Response.notFound("Admin not found");
+    private final Response userNameAlreadyExistsResponse = Response.badRequest("User name already exists");
+
     @Autowired
     public AdminController(AdminRepository repository) {
         this.repository = repository;
@@ -40,6 +43,9 @@ public class AdminController {
         for (Admin admin : admins) {
             dtos.add(new AdminDto(admin));
         }
+        if (dtos.isEmpty()) {
+            return adminNotFoundResponse;
+        }
         return Response.success(dtos);
     }
 
@@ -47,7 +53,7 @@ public class AdminController {
     public Response createAdmin(@RequestBody AdminParam param) {
         // check if username exists
         if (repository.findByUsername(param.getUsername()) != null) {
-            return Response.badRequest("Username already exists");
+            return userNameAlreadyExistsResponse;
         }
         // save admin
         Admin admin = new Admin();
@@ -62,7 +68,7 @@ public class AdminController {
     public Response getAdminById(@PathVariable("id") long id) {
         Admin admin = repository.findById(id);
         if (admin == null) {
-            return Response.notFound();
+            return adminNotFoundResponse;
         }
         return Response.success(new AdminDto(admin));
     }
@@ -71,12 +77,12 @@ public class AdminController {
     public Response updateAdminById(@PathVariable("id") long id, @RequestBody AdminParam param) {
         Admin admin = repository.findById(id);
         if (admin == null) {
-            return Response.notFound();
+            return adminNotFoundResponse;
         }
         // check if username exists
         if (repository.findByUsername(param.getUsername()) != null
                 && !admin.getUsername().equals(param.getUsername())) {
-            return Response.badRequest("Username already exists");
+            return userNameAlreadyExistsResponse;
         }
         // update admin
         admin.setName(param.getName());
@@ -90,7 +96,7 @@ public class AdminController {
     public Response deleteAdminById(@PathVariable("id") long id) {
         Admin admin = repository.findById(id);
         if (admin == null) {
-            return Response.notFound();
+            return adminNotFoundResponse;
         }
         repository.delete(admin);
         return Response.success();
@@ -102,6 +108,9 @@ public class AdminController {
         List<AdminDto> dtos = new ArrayList<>();
         for (Admin admin : admins) {
             dtos.add(new AdminDto(admin));
+        }
+        if (dtos.isEmpty()) {
+            return adminNotFoundResponse;
         }
         return Response.success(dtos);
     }
