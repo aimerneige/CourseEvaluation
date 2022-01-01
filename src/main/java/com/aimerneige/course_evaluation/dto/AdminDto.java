@@ -1,6 +1,6 @@
 package com.aimerneige.course_evaluation.dto;
 
-import com.aimerneige.course_evaluation.model.Admin;
+import com.aimerneige.course_evaluation.entity.Admin;
 
 public class AdminDto {
 

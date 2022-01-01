@@ -1,9 +1,9 @@
 package com.aimerneige.course_evaluation.repository;
 
+import com.aimerneige.course_evaluation.entity.Course;
+
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
-import com.aimerneige.course_evaluation.model.Course;
 
 @Repository
 public interface CourseRepository extends CrudRepository<Course, Long> {

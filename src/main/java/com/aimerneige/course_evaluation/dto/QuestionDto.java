@@ -1,6 +1,6 @@
 package com.aimerneige.course_evaluation.dto;
 
-import com.aimerneige.course_evaluation.model.Question;
+import com.aimerneige.course_evaluation.entity.Question;
 
 public class QuestionDto {
 

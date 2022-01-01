@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aimerneige.course_evaluation.dto.AdminDto;
-import com.aimerneige.course_evaluation.model.Admin;
+import com.aimerneige.course_evaluation.entity.Admin;
 import com.aimerneige.course_evaluation.param.AdminParam;
 
 import org.springframework.beans.factory.annotation.Autowired;

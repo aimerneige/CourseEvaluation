@@ -1,7 +1,7 @@
 package com.aimerneige.course_evaluation.controller;
 
 import com.aimerneige.course_evaluation.dto.EvaluationDto;
-import com.aimerneige.course_evaluation.model.Evaluation;
+import com.aimerneige.course_evaluation.entity.Evaluation;
 import com.aimerneige.course_evaluation.repository.EvaluationRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;

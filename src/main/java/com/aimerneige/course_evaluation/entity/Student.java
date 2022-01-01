@@ -1,4 +1,4 @@
-package com.aimerneige.course_evaluation.model;
+package com.aimerneige.course_evaluation.entity;
 
 import javax.persistence.*;
 import java.util.Set;

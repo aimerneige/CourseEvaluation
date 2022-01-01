@@ -1,9 +1,9 @@
-package com.aimerneige.course_evaluation.model;
+package com.aimerneige.course_evaluation.entity;
 
 import javax.persistence.*;
 
 @Entity
-public class Question {
+public class Praise {
 
     @Id
     @Column
@@ -11,12 +11,9 @@ public class Question {
     private Long id; // 主键
 
     @Column(length = 256)
-    private String content; // 问题
+    private String content; // 评语
 
-    @Column
-    private Integer score; // 分数
-
-    @ManyToOne
+    @OneToOne
     @JoinColumn(nullable = false)
     public Evaluation evaluation; // 评价
 
@@ -34,14 +31,6 @@ public class Question {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public Integer getScore() {
-        return this.score;
-    }
-
-    public void setScore(Integer score) {
-        this.score = score;
     }
 
     public Evaluation getEvaluation() {

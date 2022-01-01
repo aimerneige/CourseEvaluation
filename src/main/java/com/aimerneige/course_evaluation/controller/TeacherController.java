@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.aimerneige.course_evaluation.dto.TeacherDto;
-import com.aimerneige.course_evaluation.model.Teacher;
+import com.aimerneige.course_evaluation.entity.Teacher;
 import com.aimerneige.course_evaluation.param.TeacherParam;
 import com.aimerneige.course_evaluation.repository.TeacherRepository;
 import com.aimerneige.course_evaluation.response.Response;

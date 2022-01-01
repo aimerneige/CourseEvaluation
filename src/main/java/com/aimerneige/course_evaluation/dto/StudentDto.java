@@ -3,8 +3,8 @@ package com.aimerneige.course_evaluation.dto;
 import java.util.List;
 import java.util.Set;
 
-import com.aimerneige.course_evaluation.model.Evaluation;
-import com.aimerneige.course_evaluation.model.Student;
+import com.aimerneige.course_evaluation.entity.Evaluation;
+import com.aimerneige.course_evaluation.entity.Student;
 
 public class StudentDto {
 
