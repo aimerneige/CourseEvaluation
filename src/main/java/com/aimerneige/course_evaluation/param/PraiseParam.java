@@ -19,5 +19,4 @@ public class PraiseParam {
     public void setEvaluationId(Long evaluationId) {
         this.evaluationId = evaluationId;
     }
-
 }
