@@ -114,4 +114,16 @@ public class AdminController {
         }
         return Response.success(dtos);
     }
+
+    @GetMapping("/login")
+    public Response login(@RequestParam String username, @RequestParam String password) {
+        Admin admin = repository.findByUsername(username);
+        if (admin == null) {
+            return adminNotFoundResponse;
+        }
+        if (!admin.getPassword().equals(HashUtils.md5(password))) {
+            return Response.badRequest("Wrong password");
+        }
+        return Response.success(new AdminDto(admin));
+    }
 }
