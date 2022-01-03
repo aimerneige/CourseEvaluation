@@ -22,6 +22,8 @@ public class EvaluationDto {
         this.id = evaluation.getId();
         if (evaluation.getPraise() != null) {
             this.praiseId = evaluation.getPraise().getId();
+        } else {
+            this.praiseId = 0L;
         }
         this.questionIds = new ArrayList<>();
         Set<Question> questions = evaluation.getQuestions();
