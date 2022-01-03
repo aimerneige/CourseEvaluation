@@ -24,7 +24,11 @@ public class CourseDto {
         this.id = course.getId();
         this.title = course.getTitle();
         this.description = course.getDescription();
-        this.teacherId = course.getTeacher().getId();
+        if (course.getTeacher() != null) {
+            this.teacherId = course.getTeacher().getId();
+        } else {
+            this.teacherId = 0L;
+        }
         this.studentIds = new ArrayList<>();
         Set<Student> students = course.getStudents();
         if (students != null) {

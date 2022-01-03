@@ -14,7 +14,11 @@ public class PraiseDto {
     public PraiseDto(Praise praise) {
         this.id = praise.getId();
         this.content = praise.getContent();
-        this.evaluationId = praise.getEvaluation().getId();
+        if (praise.getEvaluation() != null) {
+            this.evaluationId = praise.getEvaluation().getId();
+        } else {
+            this.evaluationId = 0L;
+        }
     }
 
     public Long getId() {
