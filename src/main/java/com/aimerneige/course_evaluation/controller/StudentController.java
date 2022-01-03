@@ -121,4 +121,16 @@ public class StudentController {
         }
         return Response.success(dtos);
     }
+
+    @GetMapping("login")
+    public Response login(@RequestParam String idNumber, @RequestParam String password) {
+        Student student = repository.findByIdNumber(idNumber);
+        if (student == null) {
+            return studentNotFoundResponse;
+        }
+        if (!student.getPassword().equals(HashUtils.md5(password))) {
+            return Response.badRequest("Password is incorrect");
+        }
+        return Response.success(new StudentDto(student));
+    }
 }
