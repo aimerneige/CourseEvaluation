@@ -8,4 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PraiseRepository extends CrudRepository<Praise, Long> {
     Praise findById(long id);
+
+    Praise findByEvaluationId(long evaluationId);
 }

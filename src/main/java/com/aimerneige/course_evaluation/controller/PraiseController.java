@@ -30,6 +30,7 @@ public class PraiseController {
 
     private final Response praiseNotFoundResponse = Response.notFound("Praise not found");
     private final Response evaluationNotFoundResponse = Response.notFound("Evaluation not found");
+    private final Response evaluationHasBeenPraised = Response.badRequest("Evaluation has already been praised");
 
     @Autowired
     public PraiseController(PraiseRepository repository, EvaluationRepository evaluationRepository) {
@@ -57,6 +58,11 @@ public class PraiseController {
         Evaluation evaluation = evaluationRepository.findById(evaluationId);
         if (evaluation == null) {
             return evaluationNotFoundResponse;
+        }
+        // check if evaluation has already been praised
+        Praise check = repository.findByEvaluationId(evaluationId);
+        if (check != null) {
+            return evaluationHasBeenPraised;
         }
         // save praise
         Praise praise = new Praise();
@@ -87,6 +93,11 @@ public class PraiseController {
         Evaluation evaluation = evaluationRepository.findById(evaluationId);
         if (evaluation == null) {
             return evaluationNotFoundResponse;
+        }
+        // check if evaluation has already been praised
+        Praise check = repository.findByEvaluationId(evaluationId);
+        if (check != null) {
+            return evaluationHasBeenPraised;
         }
         // update praise
         praise.setContent(param.getContent());
