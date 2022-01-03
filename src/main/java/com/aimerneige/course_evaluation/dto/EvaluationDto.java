@@ -32,8 +32,16 @@ public class EvaluationDto {
                 this.questionIds.add(question.getId());
             }
         }
-        this.studentId = evaluation.getStudent().getId();
-        this.courseId = evaluation.getCourse().getId();
+        if (evaluation.getStudent() != null) {
+            this.studentId = evaluation.getStudent().getId();
+        } else {
+            this.studentId = 0L;
+        }
+        if (evaluation.getCourse() != null) {
+            this.courseId = evaluation.getCourse().getId();
+        } else {
+            this.courseId = 0L;
+        }
     }
 
     public Long getId() {
