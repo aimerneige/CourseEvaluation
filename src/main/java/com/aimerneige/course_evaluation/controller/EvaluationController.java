@@ -71,6 +71,14 @@ public class EvaluationController {
         if (course == null) {
             return courseNotFoundResponse;
         }
+        // check if student in course
+        if (!course.getStudents().contains(student)) {
+            return Response.badRequest("Student not in course");
+        }
+        // check if student has already evaluated this course
+        if (repository.findByStudentIdAndCourseId(studentId, courseId) != null) {
+            return Response.badRequest("Student has already evaluated this course");
+        }
         // create evaluation
         Evaluation evaluation = new Evaluation();
         evaluation.setStudent(student);
