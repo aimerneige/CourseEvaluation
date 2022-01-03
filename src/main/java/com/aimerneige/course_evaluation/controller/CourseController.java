@@ -127,7 +127,7 @@ public class CourseController {
     }
 
     @PostMapping("/{id}/student")
-    public Response insertCourseStudents(@PathVariable("id") long id, @RequestParam long studentId) {
+    public Response insertCourseStudent(@PathVariable("id") long id, @RequestParam long studentId) {
         Course course = repository.findById(id);
         if (course == null) {
             return teacherNotFoundResponse;
