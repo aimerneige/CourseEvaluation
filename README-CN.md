@@ -4,6 +4,10 @@
 
 Java Spring Boot 课程设计。大学课程评课系统。
 
+接口尽量满足了 restful api。
+
+数据库访问使用 jpa。
+
 ## 如何编译
 
 1. 在 `src/main/resources` 目录下添加 `application.yml` 文件填入数据库配置。
@@ -41,6 +45,10 @@ spring:
 ```bash
 java -jar build/libs/course_evaluation-0.0.1-SNAPSHOT.jar
 ```
+
+## 警告
+
+这个项目仅用于学习交流，它没有实现任何鉴权功能，**永远不要把它用在生产环境里！**
 
 ## 开源协议
 

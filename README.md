@@ -6,6 +6,10 @@
 
 Java Spring Boot Course Design. University Course Evaluation System.
 
+Satisfy the restful api as much as possible.
+
+Use jpa to implement database operations.
+
 ## How to build
 
 1. Add `application.yml` file with database config at `src/main/resources`.
@@ -43,6 +47,10 @@ spring:
 ```bash
 java -jar build/libs/course_evaluation-0.0.1-SNAPSHOT.jar
 ```
+
+## Warning
+
+This project is just for learning use. It does not contain any permission check, **NEVER USE IT IN A PRODUCTION ENVIRONMENT!**
 
 ## LICENSE
 
