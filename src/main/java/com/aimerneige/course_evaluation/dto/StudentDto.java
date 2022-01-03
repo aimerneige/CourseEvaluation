@@ -1,5 +1,6 @@
 package com.aimerneige.course_evaluation.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -28,6 +29,7 @@ public class StudentDto {
         this.sex = student.getSex();
         this.email = student.getEmail();
         this.age = student.getAge();
+        this.evaluationIds = new ArrayList<>();
         Set<Evaluation> evaluations = student.getEvaluations();
         if (evaluations != null) {
             for (Evaluation evaluation : evaluations) {
