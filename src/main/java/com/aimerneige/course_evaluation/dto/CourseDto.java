@@ -1,5 +1,6 @@
 package com.aimerneige.course_evaluation.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -24,12 +25,14 @@ public class CourseDto {
         this.title = course.getTitle();
         this.description = course.getDescription();
         this.teacherId = course.getTeacher().getId();
+        this.studentIds = new ArrayList<>();
         Set<Student> students = course.getStudents();
         if (students != null) {
             for (Student student : students) {
                 this.studentIds.add(student.getId());
             }
         }
+        this.evaluationIds = new ArrayList<>();
         Set<Evaluation> evaluations = course.getEvaluations();
         if (evaluations != null) {
             for (Evaluation evaluation : evaluations) {
