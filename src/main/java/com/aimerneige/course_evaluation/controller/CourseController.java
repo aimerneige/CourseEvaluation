@@ -136,6 +136,10 @@ public class CourseController {
         if (student == null) {
             return studentNotFoundResponse;
         }
+        // check if student is already in course
+        if (course.getStudents().contains(student)) {
+            return Response.badRequest("Student is already in course");
+        }
         course.students.add(student);
         repository.save(course);
         return Response.success(new CourseDto(course));
