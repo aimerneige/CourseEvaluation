@@ -34,6 +34,9 @@ public class EvaluationController {
     private final Response evaluationNotFoundResponse = Response.notFound("Evaluation not found");
     private final Response studentNotFoundResponse = Response.notFound("Student not found");
     private final Response courseNotFoundResponse = Response.notFound("Course not found");
+    private final Response studentNotInCourseResponse = Response.badRequest("Student not in course");
+    private final Response studentAlreadyEvaluatedResponse = Response
+            .badRequest("Student has already evaluated this course");
 
     @Autowired
     public EvaluationController(EvaluationRepository repository, StudentRepository studentRepository,
@@ -73,11 +76,11 @@ public class EvaluationController {
         }
         // check if student in course
         if (!course.getStudents().contains(student)) {
-            return Response.badRequest("Student not in course");
+            return studentNotInCourseResponse;
         }
         // check if student has already evaluated this course
         if (repository.findByStudentIdAndCourseId(studentId, courseId) != null) {
-            return Response.badRequest("Student has already evaluated this course");
+            return studentAlreadyEvaluatedResponse;
         }
         // create evaluation
         Evaluation evaluation = new Evaluation();
@@ -113,6 +116,14 @@ public class EvaluationController {
         Course course = courseRepository.findById(courseId);
         if (course == null) {
             return courseNotFoundResponse;
+        }
+        // check if student in course
+        if (!course.getStudents().contains(student)) {
+            return studentNotInCourseResponse;
+        }
+        // check if student has already evaluated this course
+        if (repository.findByStudentIdAndCourseId(studentId, courseId) != null) {
+            return studentAlreadyEvaluatedResponse;
         }
         // update evaluation
         evaluation.setStudent(student);
