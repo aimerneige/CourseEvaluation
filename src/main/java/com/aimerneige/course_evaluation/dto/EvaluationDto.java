@@ -20,7 +20,9 @@ public class EvaluationDto {
 
     public EvaluationDto(Evaluation evaluation) {
         this.id = evaluation.getId();
-        this.praiseId = evaluation.getPraise().getId();
+        if (evaluation.getPraise() != null) {
+            this.praiseId = evaluation.getPraise().getId();
+        }
         this.questionIds = new ArrayList<>();
         Set<Question> questions = evaluation.getQuestions();
         if (questions != null) {
