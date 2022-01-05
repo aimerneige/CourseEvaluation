@@ -29,6 +29,17 @@ spring:
   web:
     resources:
       add-mappings: false
+  mail:
+    host: smtp.gmail.com
+    port: 25
+    username: account@gmail.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/db_course_evaluation?characterEncoding=utf-8
