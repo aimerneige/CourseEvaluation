@@ -133,13 +133,9 @@ public class CourseController {
         if (course == null) {
             return courseNotFoundResponse;
         }
-        Iterable<Student> students = studentRepository.findByCourseId(id);
         List<StudentDto> dtos = new ArrayList<>();
-        for (Student student : students) {
+        for (Student student : course.getStudents()) {
             dtos.add(new StudentDto(student));
-        }
-        if (dtos.isEmpty()) {
-            return studentNotFoundResponse;
         }
         return Response.success(dtos);
     }
