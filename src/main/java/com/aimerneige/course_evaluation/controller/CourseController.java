@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 import com.aimerneige.course_evaluation.dto.CourseDto;
+import com.aimerneige.course_evaluation.dto.StudentDto;
 import com.aimerneige.course_evaluation.entity.Course;
 import com.aimerneige.course_evaluation.entity.Student;
 import com.aimerneige.course_evaluation.entity.Teacher;
@@ -122,6 +123,23 @@ public class CourseController {
         }
         if (dtos.isEmpty()) {
             return courseNotFoundResponse;
+        }
+        return Response.success(dtos);
+    }
+
+    @GetMapping("/{id}/students")
+    public Response getStudentsByCourseId(@PathVariable("id") long id) {
+        Course course = repository.findById(id);
+        if (course == null) {
+            return courseNotFoundResponse;
+        }
+        Iterable<Student> students = studentRepository.findByCourseId(id);
+        List<StudentDto> dtos = new ArrayList<>();
+        for (Student student : students) {
+            dtos.add(new StudentDto(student));
+        }
+        if (dtos.isEmpty()) {
+            return studentNotFoundResponse;
         }
         return Response.success(dtos);
     }
