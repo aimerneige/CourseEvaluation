@@ -3,9 +3,12 @@ package com.aimerneige.course_evaluation.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.aimerneige.course_evaluation.dto.StudentDto;
 import com.aimerneige.course_evaluation.entity.Student;
 import com.aimerneige.course_evaluation.param.StudentParam;
+import com.aimerneige.course_evaluation.param.StudentRegisterParam;
 import com.aimerneige.course_evaluation.repository.StudentRepository;
 import com.aimerneige.course_evaluation.response.Response;
 import com.aimerneige.course_evaluation.utils.HashUtils;
@@ -49,7 +52,12 @@ public class StudentController {
     }
 
     @PostMapping("")
-    public Response createStudent(@RequestBody StudentParam param) {
+    public Response createStudent(HttpSession session, @RequestBody StudentRegisterParam param) {
+        // check verify code
+        String verifyCode = (String) session.getAttribute("verifyCode");
+        if (verifyCode == null || !verifyCode.equals(param.getVerifyCode())) {
+            return Response.badRequest("Verify code is not correct");
+        }
         // check if idNumber exist
         if (repository.findByIdNumber(param.getIdNumber()) != null) {
             return studentIdNumberExistResponse;
