@@ -52,12 +52,7 @@ public class StudentController {
     }
 
     @PostMapping("")
-    public Response createStudent(HttpSession session, @RequestBody StudentRegisterParam param) {
-        // check verify code
-        String verifyCode = (String) session.getAttribute("verifyCode");
-        if (verifyCode == null || !verifyCode.equals(param.getVerifyCode())) {
-            return Response.badRequest("Verify code is not correct");
-        }
+    public Response createStudent(@RequestBody StudentParam param) {
         // check if idNumber exist
         if (repository.findByIdNumber(param.getIdNumber()) != null) {
             return studentIdNumberExistResponse;
@@ -139,6 +134,30 @@ public class StudentController {
         if (!student.getPassword().equals(HashUtils.md5(password))) {
             return Response.badRequest("Password is incorrect");
         }
+        return Response.success(new StudentDto(student));
+    }
+
+    @PostMapping("/register")
+    public Response registerStudent(HttpSession session, @RequestBody StudentRegisterParam param) {
+        // check verify code
+        String verifyCode = (String) session.getAttribute("verifyCode");
+        if (verifyCode == null || !verifyCode.equals(param.getVerifyCode())) {
+            return Response.badRequest("Verify code is not correct");
+        }
+        // check if idNumber exist
+        if (repository.findByIdNumber(param.getIdNumber()) != null) {
+            return studentIdNumberExistResponse;
+        }
+        // save student
+        Student student = new Student();
+        student.setIdNumber(param.getIdNumber());
+        student.setName(param.getName());
+        student.setPhone(param.getPhone());
+        student.setSex(param.getSex());
+        student.setEmail(param.getEmail());
+        student.setPassword(HashUtils.md5(param.getPassword()));
+        student.setAge(param.getAge());
+        repository.save(student);
         return Response.success(new StudentDto(student));
     }
 }
