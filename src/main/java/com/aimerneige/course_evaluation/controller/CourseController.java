@@ -137,6 +137,9 @@ public class CourseController {
         for (Student student : course.getStudents()) {
             dtos.add(new StudentDto(student));
         }
+        if (dtos.isEmpty()) {
+            return studentNotFoundResponse;
+        }
         return Response.success(dtos);
     }
 
