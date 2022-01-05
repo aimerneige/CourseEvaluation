@@ -8,6 +8,7 @@ import com.aimerneige.course_evaluation.response.Response;
 import com.aimerneige.course_evaluation.utils.VerifyCodeUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,11 @@ public class MailController {
         String verifyCode = VerifyCodeUtil.generateVerifyCode(6);
         session.setAttribute("verifyCode", verifyCode);
         String mailText = String.format(MAIL_TEXT_TEMPLATE, verifyCode);
-        emailService.sendSimpleMessage(to, MAIL_SUBJECT, mailText);
+        try {
+            emailService.sendSimpleMessage(to, MAIL_SUBJECT, mailText);
+        } catch (MailException e) {
+            return Response.internalServerError(e.getMessage());
+        }
         return Response.success("Mail sent");
     }
 }

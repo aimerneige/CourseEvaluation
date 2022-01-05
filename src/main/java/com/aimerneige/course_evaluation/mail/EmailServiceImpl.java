@@ -9,23 +9,16 @@ import org.springframework.mail.javamail.JavaMailSender;
 @Component
 public class EmailServiceImpl implements EmailService {
 
-    private static final String NOREPLY_ADDRESS = "noreply@aimerneige.com";
-
     @Autowired
     private JavaMailSender emailSender;
 
     @Override
-    public void sendSimpleMessage(String to, String subject, String text) {
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom(NOREPLY_ADDRESS);
-            message.setTo(to);
-            message.setSubject(subject);
-            message.setText(text);
+    public void sendSimpleMessage(String to, String subject, String text) throws MailException {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject(subject);
+        message.setText(text);
 
-            emailSender.send(message);
-        } catch (MailException exception) {
-            exception.printStackTrace();
-        }
+        emailSender.send(message);
     }
 }
