@@ -189,4 +189,17 @@ public class CourseController {
         }
         return Response.success(dtos);
     }
+
+    @GetMapping("/student")
+    public Response getAllCourseByStudentId(@RequestParam long studentId) {
+        List<Course> courses = repository.findByStudentId(studentId);
+        List<CourseDto> dtos = new ArrayList<>();
+        for (Course course : courses) {
+            dtos.add(new CourseDto(course));
+        }
+        if (dtos.isEmpty()) {
+            return courseNotFoundResponse;
+        }
+        return Response.success(dtos);
+    }
 }
