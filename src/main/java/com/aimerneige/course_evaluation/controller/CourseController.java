@@ -176,4 +176,17 @@ public class CourseController {
         repository.save(course);
         return Response.success(new CourseDto(course));
     }
+
+    @GetMapping("/teacher")
+    public Response getAllCourseByTeacherId(@RequestParam long teacherId) {
+        Iterable<Course> courses = repository.findByTeacherId(teacherId);
+        List<CourseDto> dtos = new ArrayList<>();
+        for (Course course : courses) {
+            dtos.add(new CourseDto(course));
+        }
+        if (dtos.isEmpty()) {
+            return courseNotFoundResponse;
+        }
+        return Response.success(dtos);
+    }
 }

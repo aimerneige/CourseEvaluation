@@ -10,4 +10,6 @@ public interface CourseRepository extends CrudRepository<Course, Long> {
     Course findById(long id);
 
     Iterable<Course> findByTitle(String title);
+
+    Iterable<Course> findByTeacherId(long teacherId);
 }
