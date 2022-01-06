@@ -7,6 +7,7 @@ public class QuestionDto {
     private Long id;
     private String content;
     private Integer score;
+    private Long evaluationId;
 
     public QuestionDto() {
     }
@@ -15,6 +16,7 @@ public class QuestionDto {
         this.id = question.getId();
         this.content = question.getContent();
         this.score = question.getScore();
+        this.evaluationId = question.getEvaluation().getId();
     }
 
     public Long getId() {
@@ -39,5 +41,13 @@ public class QuestionDto {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public Long getEvaluationId() {
+        return evaluationId;
+    }
+
+    public void setEvaluationId(Long evaluationId) {
+        this.evaluationId = evaluationId;
     }
 }
