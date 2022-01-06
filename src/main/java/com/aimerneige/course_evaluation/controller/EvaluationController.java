@@ -147,4 +147,17 @@ public class EvaluationController {
         }
         return Response.success(dtos);
     }
+
+    @GetMapping("/course")
+    public Response getAllEvaluationByCourseId(@RequestParam long courseId) {
+        Iterable<Evaluation> evaluations = repository.findByCourseId(courseId);
+        List<EvaluationDto> dtos = new ArrayList<>();
+        for (Evaluation evaluation : evaluations) {
+            dtos.add(new EvaluationDto(evaluation));
+        }
+        if (dtos.isEmpty()) {
+            return evaluationNotFoundResponse;
+        }
+        return Response.success(dtos);
+    }
 }

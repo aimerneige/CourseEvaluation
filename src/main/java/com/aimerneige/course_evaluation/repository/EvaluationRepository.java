@@ -12,4 +12,6 @@ public interface EvaluationRepository extends CrudRepository<Evaluation, Long> {
     Evaluation findByStudentIdAndCourseId(long studentId, long courseId);
 
     Iterable<Evaluation> findByStudentId(long studentId);
+
+    Iterable<Evaluation> findByCourseId(long courseId);
 }
