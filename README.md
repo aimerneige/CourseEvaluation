@@ -10,6 +10,10 @@ Satisfy the restful api as much as possible.
 
 Use jpa to implement database operations.
 
+## Client
+
+[pyqt](https://github.com/aimerneige/CourseEvaluationClient)
+
 ## How to build
 
 1. Add `application.yml` file with database config at `src/main/resources`.
