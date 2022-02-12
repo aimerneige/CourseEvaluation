@@ -8,6 +8,10 @@ Java Spring Boot 课程设计。大学课程评课系统。
 
 数据库访问使用 jpa。
 
+## 客户端
+
+[pyqt](https://github.com/aimerneige/CourseEvaluationClient)
+
 ## 如何编译
 
 1. 在 `src/main/resources` 目录下添加 `application.yml` 文件填入数据库配置。
