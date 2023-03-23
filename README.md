@@ -13,6 +13,7 @@ Use jpa to implement database operations.
 ## Client
 
 [pyqt](https://github.com/aimerneige/CourseEvaluationClient)
+[vue](https://github.com/nidbCN/CourseEvaluation/tree/master/src/frontend/course_evaluation)
 
 ## How to build
 
