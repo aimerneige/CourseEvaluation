@@ -11,6 +11,7 @@ Java Spring Boot 课程设计。大学课程评课系统。
 ## 客户端
 
 [pyqt](https://github.com/aimerneige/CourseEvaluationClient)
+[vue](https://github.com/nidbCN/CourseEvaluation/tree/master/src/frontend/course_evaluation)
 
 ## 如何编译
 
